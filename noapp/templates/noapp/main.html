@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NonameBlog</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'noapp/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="" class="logo">NonameBlog</a>
+    </header>
+    <main>
+        {%for post in posts%}
+        <a href="{%url 'post' post.id%}">
+            <div class="post">
+                <h2>{{post.author}} {{post.title}}</h2>
+                {%if post.image%}
+                <img src="{{post.image.url}}" alt="">
+                {%endif%}
+                <p>{{post.text}}</p>
+                <h3>{{post.published}}</h3>
+            </div>
+        </a>
+        {%endfor%}
+    </main>
+</body>
+</html>
