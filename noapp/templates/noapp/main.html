@@ -9,7 +9,10 @@
 </head>
 <body>
     <header>
-        <a href="" class="logo">NonameBlog</a>
+        <a href="/" class="logo">NonameBlog</a>
+        <a href="{%url 'old' %}">old</a>
+        <a href="{%url 'month'%}">month</a>
+        <a href="{%url 'day'%}">day</a>
     </header>
     <main>
         {%for post in posts%}
@@ -19,11 +22,22 @@
                 {%if post.image%}
                 <img src="{{post.image.url}}" alt="">
                 {%endif%}
-                <p>{{post.text}}</p>
+                <p>{{post.text|truncatewords:20}}</p>
                 <h3>{{post.published}}</h3>
             </div>
         </a>
         {%endfor%}
     </main>
+    <footer>
+        {% if posts.has_previous %}
+        <a href="?page=1">&laquo; 1</a>
+        <a href="?page={{posts.previous_page_number}}">{{posts.previous_page_number}}</a>
+        {%endif%}
+        <h2>{{posts.number}}</h2>
+        {% if posts.has_next %}
+        <a href="?page={{posts.next_page_number}}">{{posts.next_page_number}}</a>
+        <a href="?page={{posts.paginator.num_pages}}">{{posts.paginator.num_pages}} &raquo;</a>
+        {%endif%}
+    </footer>
 </body>
 </html>
