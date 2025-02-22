@@ -8,3 +8,10 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ['title', 'author', 'status', 'marker', 'id', 'changed', 'published', 'created']
 
 
+@admin.register(Comment)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['name', 'published']
+    list_filter = ['name', 'published', 'text']
+
+
+admin.site.register(FeedBack)

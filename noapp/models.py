@@ -32,3 +32,18 @@ class Post(models.Model):
     def get_absolute_url(self):
 
         return reverse('post_detail', kwargs={'pk': self.pk})
+
+
+class Comment(models.Model):
+
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, blank=True, default='Noname')
+    text = models.CharField(max_length=300)
+    published = models.DateTimeField(auto_now=True)
+
+
+class FeedBack(models.Model):
+
+    name = models.CharField(max_length=100, blank=True, default='Noname')
+    text = models.CharField(max_length=300)
+    mail = models.EmailField(max_length=50)

@@ -20,6 +20,20 @@
             <p>{{post.text}}</p>
             <h3>{{post.published}}</h3>
         </div>
+        <form method="post">
+            {%csrf_token%}
+            {{form}}
+            <button type="submit">POST</button>
+        </form>
+        <section class="comments">
+            {%for comment in comments%}
+            <div class="comment">
+                <p>{{comment.name}}</p>
+                <p>{{comment.text}}</p>
+                <h3>{{comment.published}}</h3>
+            </div>
+            {%endfor%}
+        </section>
     </main>
 </body>
 </html>
