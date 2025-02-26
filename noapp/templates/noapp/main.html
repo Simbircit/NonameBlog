@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NonameBlog</title>
-    {%load static%}
-    <link rel="stylesheet" href="{% static 'noapp/style.css' %}">
-</head>
-<body>
-    <header>
-        <a href="/" class="logo">NonameBlog</a>
-        <a href="{%url 'old' %}">old</a>
-        <a href="{%url 'month'%}">month</a>
-        <a href="{%url 'day'%}">day</a>
-    </header>
+{%extends 'noapp/blog.html'%}
+{%block title%}{%endblock%}
+{%block content%}
     <main>
         {%for post in posts%}
         <a href="{%url 'post' post.id%}">
@@ -39,5 +26,4 @@
         <a href="?page={{posts.paginator.num_pages}}">{{posts.paginator.num_pages}} &raquo;</a>
         {%endif%}
     </footer>
-</body>
-</html>
+{%endblock%}

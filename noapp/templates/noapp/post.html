@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%} {% endblock %}</title>
-    {%load static%}
-    <link rel="stylesheet" href="{% static 'noapp/style.css' %}">
-</head>
-<body>
-    <header>
-        <a href="/" class="logo">NonameBlog</a>
-    </header>
-    <main>
+{%extends 'noapp/blog.html'%}
+{%block title%}{{post.title}}{%endblock%}
+{%block content%}
+<main>
         <div class="post">
             <h2>{{post.author}} {{post.title}}</h2>
             {%if post.image%}
@@ -35,5 +25,4 @@
             {%endfor%}
         </section>
     </main>
-</body>
-</html>
+{%endblock%}
